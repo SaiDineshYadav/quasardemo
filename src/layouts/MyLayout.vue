@@ -15,6 +15,7 @@
         {{ title }}
       </q-toolbar-title>
       <q-btn
+        v-if="!userDetails.userId"
         to="/auth"
         color="absolute-right q-pr-sm"
         flat
@@ -22,6 +23,16 @@
         no-caps
         icon="account_circle"
         label="Login"
+      />
+      <q-btn
+        v-else
+        to="/auth"
+        color="absolute-right q-pr-sm"
+        flat
+        dense
+        no-caps
+        icon="account_circle"
+        label="Logout"
       />
     </q-toolbar>
 
@@ -32,8 +43,11 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   computed: {
+    ...mapState("store", ["userDetails"]),
     title() {
       let currentPath = this.$route.fullPath;
       if (currentPath == "/") return "Smack Chat";

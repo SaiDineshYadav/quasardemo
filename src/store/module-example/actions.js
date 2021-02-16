@@ -25,3 +25,25 @@ export function loginUser({}, payload) {
         console.log(error);
     });
 }
+ 
+export function handleAuthStateChange({ commit }) {
+    console.log('******************')
+    firebaseAuth.onAuthStageChanged(user => {
+        if (user) {
+            let userId = firebaseAuth.currentUser.uid;
+            firebaseDb.ref('users/' + userId).once('value', snapshot => {
+                console.log(snapshot);
+                let userDetails = snapshot.val();
+                console.log(userDetails);
+                commit('setUserDetails', {
+                    name: userDetails.name,
+                    email: userDetails.email,
+                    userId: userId
+                });
+            });
+
+        } else {
+            commit('setUserDetails', {});
+        }
+    });
+}
