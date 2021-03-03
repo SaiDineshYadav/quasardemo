@@ -2,7 +2,7 @@
   <q-page class="flex">
     <div class="q-pa-md" style="max-width: 350px">
       <q-toolbar class="bg-primary text-white shadow-2">
-        <q-toolbar-title>Contacts</q-toolbar-title>
+        <q-toolbar-title >Contacts</q-toolbar-title>
       </q-toolbar>
 
       <q-list bordered separator>
@@ -21,7 +21,7 @@
           </q-item-section>
 
           <q-item-section>
-            <q-item-label>{{ user.name }}</q-item-label>
+            <q-item-label class="text-weight-bolder">{{ user.name }}</q-item-label>
           </q-item-section>
 
           <q-item-section side>

@@ -15,7 +15,6 @@
         {{ title }}
       </q-toolbar-title>
       <q-btn
-        v-if="!userDetails.userId"
         to="/auth"
         color="absolute-right q-pr-sm"
         flat
@@ -25,7 +24,6 @@
         label="Login"
       />
       <q-btn
-        v-else
         to="/auth"
         color="absolute-right q-pr-sm"
         flat
@@ -35,6 +33,8 @@
         label="Logout"
       />
     </q-toolbar>
+        <!-- v-if="!userDetails?.userId" -->
+
 
     <q-page-container>
       <router-view />
@@ -47,7 +47,7 @@ import { mapState } from "vuex";
 
 export default {
   computed: {
-    ...mapState("store", ["userDetails"]),
+    ...mapState("index", ["userDetails"]),
     title() {
       let currentPath = this.$route.fullPath;
       if (currentPath == "/") return "Smack Chat";
@@ -58,6 +58,11 @@ export default {
   },
   data() {
     return {};
+  },
+  created() {
+    console.log(this.userDetails)
+    console.log(this.userDetails['__ob__'])
+
   }
 };
 </script>

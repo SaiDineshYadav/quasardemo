@@ -9,8 +9,7 @@ const routes = [
       { path: '/sample', component: () => import('pages/Sample.vue') },
       { path: '/chat', component: () => import('pages/PageChat.vue') },
       { path: '/auth', component: () => import('pages/PageAuth.vue') },
-
-
+      { path: '/login', component: () => import('pages/LoginPage.vue') },
 
     ]
   },
